@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8433760834845706857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9190a04da29ae24ab35e05133ebf087, type: 3}
+  m_Name: _Catalog_Tags
+  m_EditorClassIdentifier: 
+  m_Tags: []
+  m_Database: {fileID: 11400000}
+--- !u!114 &-8023264241512093237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2da6fd8dcbc743878084f83ab49ad7c, type: 3}
+  m_Name: _Catalog_Currency
+  m_EditorClassIdentifier: 
+  m_Database: {fileID: 11400000}
+  m_Items: []
+--- !u!114 &-5845231025473725336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81b157322addcd439104bd3c59b830b, type: 3}
+  m_Name: Store_main
+  m_EditorClassIdentifier: 
+  m_DisplayName: Main
+  m_Key: main
+  m_Tags: []
+  m_Catalog: {fileID: 0}
+  m_StaticPropertyKeys: []
+  m_StaticPropertyValues: []
+  m_DetailValues: []
+  m_StoreItems: []
+--- !u!114 &-3350704748493363912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3c0f44711962a40b99131878afcc83, type: 3}
+  m_Name: _Catalog_Stores
+  m_EditorClassIdentifier: 
+  m_Database: {fileID: 11400000}
+  m_Items:
+  - {fileID: -5845231025473725336}
+--- !u!114 &-3256764375433405221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069acf70dc5a3428cb53df4df156ad59, type: 3}
+  m_Name: _Catalog_Transaction
+  m_EditorClassIdentifier: 
+  m_Database: {fileID: 11400000}
+  m_Items: []
+--- !u!114 &-534283171470311619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_apple
+  m_EditorClassIdentifier: 
+  m_DisplayName: Apple
+  m_Key: apple
+  m_Tags: []
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys: []
+  m_StaticPropertyValues: []
+  m_DetailValues: []
+  m_InitialAllocation: 0
+  m_PropertyKeys: []
+  m_PropertyDefaultValues: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d6d794703b5406883240f543e5b084, type: 3}
+  m_Name: GameFoundationDatabase
+  m_EditorClassIdentifier: 
+  m_TagCatalog: {fileID: -8433760834845706857}
+  m_InventoryCatalog: {fileID: 5887101314579155073}
+  m_StoreCatalog: {fileID: -3350704748493363912}
+  m_CurrencyCatalog: {fileID: -8023264241512093237}
+  m_TransactionCatalog: {fileID: -3256764375433405221}
+  m_GameParameterCatalog: {fileID: 8859541556717979059}
+--- !u!114 &5887101314579155073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b084f2c338a4185ab8badeed2a3947, type: 3}
+  m_Name: _Catalog_Inventories
+  m_EditorClassIdentifier: 
+  m_Database: {fileID: 11400000}
+  m_Items:
+  - {fileID: -534283171470311619}
+--- !u!114 &8859541556717979059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90084df6fbe874e7c8e34037839c2070, type: 3}
+  m_Name: _Catalog_GameParameter
+  m_EditorClassIdentifier: 
+  m_Database: {fileID: 11400000}
+  m_Items: []

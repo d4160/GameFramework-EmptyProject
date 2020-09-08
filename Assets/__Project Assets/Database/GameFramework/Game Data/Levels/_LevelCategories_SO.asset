@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134d801e0cd5bf74b932404e4b2f8dba, type: 3}
+  m_Name: _LevelCategories_SO
+  m_EditorClassIdentifier: 
+  m_elements:
+    array:
+    - m_name: BootLoader
+      m_id: 1
+      m_scenesSO: {fileID: 11400000, guid: fcd9389600f063b44829ff8063e142e9, type: 2}
+    - m_name: LoadingScreenLogic
+      m_id: 2
+      m_scenesSO: {fileID: 11400000, guid: 38e4b21f1f636bb46be2425e9ae2af66, type: 2}
+    - m_name: MenuLogic
+      m_id: 3
+      m_scenesSO: {fileID: 11400000, guid: ade33c65669c1c84596d49208585d3b0, type: 2}
+    - m_name: CreditsLogic
+      m_id: 4
+      m_scenesSO: {fileID: 11400000, guid: d6f5dac81c192b2418089140befc0342, type: 2}
+    - m_name: World
+      m_id: 5
+      m_scenesSO: {fileID: 11400000, guid: c4b8f54deb5d7834ab89ed7a00562b0f, type: 2}
+    - m_name: CinematicsLogic
+      m_id: 6
+      m_scenesSO: {fileID: 11400000, guid: a2400b2387f074c4caf64c82fc130a85, type: 2}
+    - m_name: PlayLogic
+      m_id: 7
+      m_scenesSO: {fileID: 11400000, guid: 3b6c212694daffe4a90115960a052dce, type: 2}

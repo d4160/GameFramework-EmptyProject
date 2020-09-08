@@ -1,0 +1,9 @@
+{
+    "BuildSteps": [
+        "Unity.Build.Classic.SaveScenesAndAssets, Unity.Build.Classic",
+        "Unity.Build.Classic.BuildStepApplyPlayerSettings, Unity.Build.Classic",
+        "Unity.Build.Classic.BuildStepSwitchPlatfomClassic, Unity.Build.Classic",
+        "Unity.Build.Classic.BuildStepBuildClassicPlayer, Unity.Build.Classic"
+    ],
+    "RunStep": "Unity.Build.Classic.RunStepNotImplemented, Unity.Build.Classic"
+}

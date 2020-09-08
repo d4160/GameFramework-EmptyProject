@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad77a21276d6e840aa30a46a6c921fa, type: 3}
+  m_Name: DividerPreset
+  m_EditorClassIdentifier: 
+  Dividers:
+  - Name: Managers
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- Managers ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.7247958, g: 0.67358494, b: 1, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: a6112fff16a9a43038cf9ea4086e4a1a, type: 3}
+    RightSprite: {fileID: 21300000, guid: a6112fff16a9a43038cf9ea4086e4a1a, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1
+  - Name: Singletons
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- Singletons ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.5981132, g: 0.6308133, b: 1, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: ecde11dc698ed4512b5b1863b5c88840, type: 3}
+    RightSprite: {fileID: 21300000, guid: adfa5a05ca0794288a1c241dedd8dddf, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1
+  - Name: General Objects
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- General Objects ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.4208615, g: 0.5777732, b: 0.8679245, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: ecde11dc698ed4512b5b1863b5c88840, type: 3}
+    RightSprite: {fileID: 21300000, guid: 5eb3b386685ff417cb55336b548d54c3, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1
+  - Name: Player Objects
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- Player Objects ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.2980598, g: 0.61748123, b: 0.8018868, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: ecde11dc698ed4512b5b1863b5c88840, type: 3}
+    RightSprite: {fileID: 21300000, guid: 613023a5073fa4d878fc385b87959727, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1
+  - Name: Environment
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- Environment ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.29803926, g: 0.75721985, b: 0.8, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: ecde11dc698ed4512b5b1863b5c88840, type: 3}
+    RightSprite: {fileID: 21300000, guid: ac6b17b560a2e47b9af5ba51edb53aa2, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1
+  - Name: UI
+    ID: 0
+    PreSuffix: '-'
+    PreSuffixCount: 10
+    Label: ---------- UI ----------
+    BoldFont: 1
+    ItalicFont: 0
+    ColoredFont: 1
+    ColoredBG: 1
+    HasOverrideColor_leftSprite: 0
+    HasOverrideColor_rightSprite: 0
+    FontColor: {r: 0, g: 0, b: 0, a: 1}
+    BGColor: {r: 0.29803926, g: 0.8, b: 0.6933484, a: 1}
+    OverrideColor_leftSprite: {r: 0, g: 0, b: 0, a: 0}
+    OverrideColor_rightSprite: {r: 0, g: 0, b: 0, a: 0}
+    HasSprite_left: 0
+    HasSprite_right: 1
+    LeftSprite: {fileID: 21300000, guid: ecde11dc698ed4512b5b1863b5c88840, type: 3}
+    RightSprite: {fileID: 21300000, guid: e1290e0bddb114b87990765005326993, type: 3}
+    LeftScale: 1
+    RightScale: 1
+    foldOut: 1

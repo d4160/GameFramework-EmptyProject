@@ -1,0 +1,14 @@
+---- 1.01 ----
+SUPPORT: Unity 2018.3
+
+FEATURE: Added waveform visualization
+FEATURE: Added the ability to duplicate sequences
+FEATURE: Individual tracks inside sequences now have separate volume controls
+FEATURE: Sequences now have a fade-out feature
+
+FIX: Editor window zooming is now saved
+FIX: Opening a new track editor is now possible without the need to close the current one
+FIX: Clips of Default type are now properly visualized
+
+---- 1.00 ---
+FIRST RELEASE

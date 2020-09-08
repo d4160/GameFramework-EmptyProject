@@ -1,0 +1,18 @@
+{
+  "name": "snozbot.fungus",
+  "displayName": "Fungus",
+  "version": "3.13.4",
+  "unity": "2018.3",
+  "description": "An easy to use Unity 3D library for creating illustrated Interactive Fiction games.",
+  "keywords": [
+    "unity",
+    "storytelling",
+    "design friendly",
+    "flowchart"
+  ],
+  "author": {
+    "name": "Chris Gregan"
+  },
+  "samples": [
+  ]
+}

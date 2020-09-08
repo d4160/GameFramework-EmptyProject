@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a99d4fdda469b448c30ab71474b975, type: 3}
+  m_Name: New Talent Graph
+  m_EditorClassIdentifier: 
+  serializedNodes:
+  - type: d4160.GameFramework.DefaultTalentNode, d4160.GameFramework, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    jsonDatas: '{"GUID":"0ad91ba9-21e9-4589-b083-c351ebca79db","computeOrder":1,"canProcess":true,"position":{"serializedVersion":"2","x":133.0,"y":206.0,"width":375.0,"height":115.0},"expanded":false,"debug":false,"nodeLock":false,"_actived":false,"_definition":{"instanceID":0}}'
+  - type: d4160.GameFramework.DefaultTalentNode, d4160.GameFramework, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    jsonDatas: '{"GUID":"b299665c-b0ba-47a3-be95-3e2e287f3585","computeOrder":2,"canProcess":true,"position":{"serializedVersion":"2","x":643.0,"y":130.0,"width":375.0,"height":115.0},"expanded":false,"debug":false,"nodeLock":false,"_actived":false,"_definition":{"instanceID":0}}'
+  edges:
+  - GUID: 8dce8b07-6cbb-4247-a7b2-e2d2ae5e70bb
+    owner: {fileID: 11400000}
+    inputNodeGUID: b299665c-b0ba-47a3-be95-3e2e287f3585
+    outputNodeGUID: 0ad91ba9-21e9-4589-b083-c351ebca79db
+    inputFieldName: input
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  groups: []
+  stackNodes: []
+  pinnedElements: []
+  exposedParameters: []
+  position: {x: -60.8, y: 28, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  references:
+    version: 1

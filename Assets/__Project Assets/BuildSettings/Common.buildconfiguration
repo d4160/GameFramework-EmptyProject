@@ -1,0 +1,42 @@
+{
+    "Dependencies": [
+    ],
+    "Components": [
+        {
+            "$type": "Unity.Build.Common.GeneralSettings, Unity.Build.Common",
+            "ProductName": "New HDRP DOTS Project",
+            "CompanyName": "Maranatha 2031"
+        },
+        {
+            "$type": "Unity.Build.Common.SceneList, Unity.Build.Common",
+            "$version": 1,
+            "BuildCurrentScene": false,
+            "SceneInfos": [
+                {
+                    "Scene": "GlobalObjectId_V1-1-eb1615703268be049a09b59844a7ed6a-102900000-0",
+                    "AutoLoad": true
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-6b31626b7c8bedb498cf51f48a0115eb-102900000-0",
+                    "AutoLoad": false
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-cd54a61ea83bf8344a06fb6e5e5f8e35-102900000-0",
+                    "AutoLoad": false
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-9fc0d4010bbf28b4594072e72b8655ab-102900000-0",
+                    "AutoLoad": false
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-14125abe4b75e664cb71e2319a7a34ac-102900000-0",
+                    "AutoLoad": false
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-cbfe36cfddfde964d9dfce63a355d5dd-102900000-0",
+                    "AutoLoad": false
+                }
+            ]
+        }
+    ]
+}

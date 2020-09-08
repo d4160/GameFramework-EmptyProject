@@ -1,0 +1,11 @@
+https://docs.unity3d.com/Manual/SpecialFolders.html
+
+Editor Multiple:Yes
+Resources Multiple:Yes
+
+Plugins root multiple:no firstpass
+Standard Assets root multiple:no firstpass
+
+Editor Default Resources root multiple:no
+Gizmos root multiple:no
+StreamingAssets root multiple:no

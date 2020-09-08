@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3823b17bc4058e44b6eba16276e20ae, type: 3}
+  m_Name: UnitySceneMemoData
+  m_EditorClassIdentifier: 
+  Scene:
+  - Guid: 45d3ca5c21843ff4ca3f9027487cb267
+    Memo:
+    - Date: 2020/9/8 10:8
+      Memo: 
+      Label: 2
+      Tex: 0
+      TextCol: 0
+      ShowAtScene: 0
+      LocalIdentifierInFile: 1386350581
+      SceneGuid: 45d3ca5c21843ff4ca3f9027487cb267
+      ObjectName: Main Camera
+      Components:
+      - {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+      - {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+      - {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+      - {fileID: -3250772413011610475, guid: 0000000000000000d000000000000000, type: 0}
+      - {fileID: 7226769568068977144, guid: 0000000000000000d000000000000000, type: 0}
+      SceneMemoWidth: 270
+      SceneMemoHeight: 150

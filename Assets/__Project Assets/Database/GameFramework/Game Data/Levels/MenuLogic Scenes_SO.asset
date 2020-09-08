@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac5b7f143dfaa248bd997ca621798c6, type: 3}
+  m_Name: MenuLogic Scenes_SO
+  m_EditorClassIdentifier: 
+  m_elements:
+    array:
+    - sceneAsset: {fileID: 102900000, guid: cd54a61ea83bf8344a06fb6e5e5f8e35, type: 3}
+      scenePath: Assets/__Project Assets/Scenes/Levels/Menu Logic/MainMenu.unity
+      sceneBuildIndex: 2
+      sceneName: MainMenu

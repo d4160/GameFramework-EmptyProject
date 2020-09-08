@@ -1,0 +1,21 @@
+{
+    "name": "DeAudioEditor",
+    "references": [
+        "GUID:aa0f2d10668b03e419012fd6cbc36cfa"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        "DemiEditor.dll",
+        "DOTween.dll",
+        "DemiLib.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

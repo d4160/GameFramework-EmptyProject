@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b77344a0f09b149813d538faa5cc29, type: 3}
+  m_Name: Leaderboards_SO
+  m_EditorClassIdentifier: 
+  m_elements:
+    array:
+    - m_name: HighScore
+      m_id: 1
+      m_stat: 0
+      m_resetFrequency: 0
+      m_aggregationMethod: 2
+      m_currentIteration: 0
+      m_entries: []
+    - m_name: BestTime
+      m_id: 2
+      m_stat: 1
+      m_resetFrequency: 0
+      m_aggregationMethod: 1
+      m_currentIteration: 0
+      m_entries: []

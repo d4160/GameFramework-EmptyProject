@@ -1,0 +1,16 @@
+<linker>
+  <assembly fullname="PhotonChat">
+    <namespace fullname="Photon.Chat" preserve="all"/>
+  </assembly>
+  <assembly fullname="PhotonRealtime">
+    <namespace fullname="Photon.Realtime" preserve="all"/>
+  </assembly>
+  <assembly fullname="PhotonUnityNetworking">
+    <namespace fullname="Photon.Pun" preserve="all"/>
+  </assembly>
+  <assembly fullname="websocket-sharp" preserve="all"/>
+  <assembly fullname="Photon3Unity3D" preserve="all"/>
+  <assembly fullname="PhotonWebSocket">
+    <namespace fullname="ExitGames.Client.Photon" preserve="all"/>
+  </assembly>
+</linker>

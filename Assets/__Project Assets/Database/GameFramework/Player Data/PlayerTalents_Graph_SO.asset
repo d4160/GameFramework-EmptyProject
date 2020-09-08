@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a99d4fdda469b448c30ab71474b975, type: 3}
+  m_Name: PlayerTalents_Graph_SO
+  m_EditorClassIdentifier: 
+  serializedNodes: []
+  edges:
+  - GUID: 97cdbe11-ee4e-4d9d-9f4e-b2e46793977b
+    owner: {fileID: 11400000}
+    inputNodeGUID: bbd62c62-a711-4cc2-8691-7cad18ad73cf
+    outputNodeGUID: 986b47b9-9f21-41d8-a721-7d8c569cfc44
+    inputFieldName: input
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  groups: []
+  stackNodes: []
+  pinnedElements:
+  - position:
+      serializedVersion: 2
+      x: 12
+      y: 100
+      width: 150
+      height: 200
+    opened: 0
+    editorType:
+      serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - position:
+      serializedVersion: 2
+      x: 0
+      y: 98
+      width: 150
+      height: 200
+    opened: 0
+    editorType:
+      serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  exposedParameters: []
+  position: {x: 200, y: 968, z: 0}
+  scale: {x: 0.8695652, y: 0.8695652, z: 1}
+  references:
+    version: 1

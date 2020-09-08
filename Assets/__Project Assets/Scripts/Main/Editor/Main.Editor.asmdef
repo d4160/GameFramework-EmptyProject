@@ -1,0 +1,21 @@
+{
+    "name": "Main.Editor",
+    "references": [
+        "GUID:20e596fafb4ed0f45be4ec11074f0b15",
+        "GUID:ca937d03ee5dd4d699091438dc0f3ae6",
+        "GUID:a432eb0a70c5c4a37ab50d59671586f8",
+        "GUID:96af450922a291f4a858da1ec21b0ebd",
+        "GUID:372b065532a1c694ba379d133de168bd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
