@@ -17,6 +17,10 @@ public class IfNode : ConditionalNode
 	[Output(name = "False")]
 	public ConditionalLink	@false;
 
+<<<<<<< HEAD
+=======
+	[Setting("Compare Function")]
+>>>>>>> 1834eda40dd381be28ee7c530b27a31b525ca99a
 	public CompareFunction		compareOperator;
 
 	public override string		name => "If";

@@ -61,7 +61,7 @@ namespace d4160.GameFramework.Authentication
 
         private static PhotonAuthService _instance;
 
-        public PhotonAuthService()
+        private PhotonAuthService()
         {
             _instance = this;
         }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using d4160.GameFramework.Authentication;
-using Ludiq;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;

@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9190a04da29ae24ab35e05133ebf087, type: 3}
   m_Name: _Catalog_Tags
   m_EditorClassIdentifier: 
-  m_Tags: []
+  m_Tags:
+  - {fileID: 6655026056945076468}
+  - {fileID: -4457372723524942006}
+  - {fileID: -7357964637849095540}
+  - {fileID: -128914503374838666}
+  - {fileID: 3875320171899268285}
+  - {fileID: -1246290402816301396}
+  - {fileID: 7329375536671869202}
+  - {fileID: 3502182052815319577}
   m_Database: {fileID: 11400000}
 --- !u!114 &-8023264241512093237
 MonoBehaviour:
@@ -28,6 +36,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Database: {fileID: 11400000}
   m_Items: []
+--- !u!114 &-7357964637849095540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Arma
+  m_EditorClassIdentifier: 
+  m_Key: Arma
+  m_Catalog: {fileID: -8433760834845706857}
+--- !u!114 &-6623355769228978922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_guante1
+  m_EditorClassIdentifier: 
+  m_DisplayName: Guante de Robot
+  m_Key: guante1
+  m_Tags:
+  - {fileID: 6655026056945076468}
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys:
+  - Damage
+  - SpriteLibraryLabel
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 3
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Robot
+  m_DetailValues: []
+  m_InitialAllocation: 0
+  m_PropertyKeys: []
+  m_PropertyDefaultValues: []
 --- !u!114 &-5845231025473725336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +103,20 @@ MonoBehaviour:
   m_StaticPropertyValues: []
   m_DetailValues: []
   m_StoreItems: []
+--- !u!114 &-4457372723524942006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Bota
+  m_EditorClassIdentifier: 
+  m_Key: Bota
+  m_Catalog: {fileID: -8433760834845706857}
 --- !u!114 &-3350704748493363912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +145,41 @@ MonoBehaviour:
   m_Name: _Catalog_Transaction
   m_EditorClassIdentifier: 
   m_Database: {fileID: 11400000}
-  m_Items: []
---- !u!114 &-534283171470311619
+  m_Items:
+  - {fileID: -2280198218131108270}
+--- !u!114 &-2280198218131108270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188049432bcf74f78b314dc2b03ee516, type: 3}
+  m_Name: VirtualTransaction_ability1Recipe
+  m_EditorClassIdentifier: 
+  m_DisplayName: "Receta del pu\xF1o r\xE1pido"
+  m_Key: ability1Recipe
+  m_Tags:
+  - {fileID: 3502182052815319577}
+  m_Catalog: {fileID: -3256764375433405221}
+  m_StaticPropertyKeys: []
+  m_StaticPropertyValues: []
+  m_DetailValues: []
+  m_Rewards:
+    m_Items:
+    - m_Item: {fileID: -806221138420948336}
+      m_Amount: 1
+    m_Currencies: []
+  m_Costs:
+    m_Items:
+    - m_Item: {fileID: -6623355769228978922}
+      m_Amount: 1
+    - m_Item: {fileID: 4431301067117876915}
+      m_Amount: 1
+    m_Currencies: []
+--- !u!114 &-1992208327932499700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,18 +189,95 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
-  m_Name: Item_apple
+  m_Name: Item_guante2
   m_EditorClassIdentifier: 
-  m_DisplayName: Apple
-  m_Key: apple
-  m_Tags: []
+  m_DisplayName: Guante de Cuero
+  m_Key: guante2
+  m_Tags:
+  - {fileID: 6655026056945076468}
   m_Catalog: {fileID: 5887101314579155073}
-  m_StaticPropertyKeys: []
-  m_StaticPropertyValues: []
+  m_StaticPropertyKeys:
+  - Damage
+  - SpriteLibraryLabel
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 4
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Rubber
   m_DetailValues: []
   m_InitialAllocation: 0
   m_PropertyKeys: []
   m_PropertyDefaultValues: []
+--- !u!114 &-1246290402816301396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Personaje
+  m_EditorClassIdentifier: 
+  m_Key: Personaje
+  m_Catalog: {fileID: -8433760834845706857}
+--- !u!114 &-806221138420948336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_habilidad1
+  m_EditorClassIdentifier: 
+  m_DisplayName: "Pu\xF1o r\xE1pido"
+  m_Key: habilidad1
+  m_Tags:
+  - {fileID: 7329375536671869202}
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys:
+  - StunProbability
+  - Cooldown
+  - StunDuration
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 4599075939470750515
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 4604930618986332160
+    stringValue: 
+  m_DetailValues: []
+  m_InitialAllocation: 0
+  m_PropertyKeys: []
+  m_PropertyDefaultValues: []
+--- !u!114 &-128914503374838666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Casco
+  m_EditorClassIdentifier: 
+  m_Key: Casco
+  m_Catalog: {fileID: -8433760834845706857}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +296,229 @@ MonoBehaviour:
   m_CurrencyCatalog: {fileID: -8023264241512093237}
   m_TransactionCatalog: {fileID: -3256764375433405221}
   m_GameParameterCatalog: {fileID: 8859541556717979059}
+--- !u!114 &1943149209463153647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_bota2
+  m_EditorClassIdentifier: 
+  m_DisplayName: Bota negra
+  m_Key: bota2
+  m_Tags:
+  - {fileID: -4457372723524942006}
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys:
+  - Damage
+  - SpriteLibraryLabel
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 6
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Black
+  m_DetailValues: []
+  m_InitialAllocation: 0
+  m_PropertyKeys: []
+  m_PropertyDefaultValues: []
+--- !u!114 &2078566095085665897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_cuy1
+  m_EditorClassIdentifier: 
+  m_DisplayName: Kazumi
+  m_Key: cuy1
+  m_Tags:
+  - {fileID: -1246290402816301396}
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys: []
+  m_StaticPropertyValues: []
+  m_DetailValues:
+  - {fileID: 6025261198021240252}
+  m_InitialAllocation: 2
+  m_PropertyKeys:
+  - Guante
+  - Bota
+  - EyeColor
+  - BodyColor
+  - HeadColor
+  - HP
+  - Damage
+  - Armor
+  - AttackSpeed
+  - MovementSpeed
+  - Habilidad1
+  - Habilidad2
+  - StunProbability
+  - BlockProbability
+  - DodgeProbability
+  - CriticalHitProbability
+  - HitProbability
+  - DamageReduction
+  - DamageAmplification
+  - StunDuration
+  - Name
+  m_PropertyDefaultValues:
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Robot
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Green
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 100
+    stringValue: 
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 5
+    stringValue: 
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 1
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 4608983858650965606
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 4612811918334230528
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 4607182418800017408
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 1
+    valueType:
+      longValue: 0
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Kazumi
+--- !u!114 &3502182052815319577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Receta
+  m_EditorClassIdentifier: 
+  m_Key: Receta
+  m_Catalog: {fileID: -8433760834845706857}
+--- !u!114 &3875320171899268285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Sueter
+  m_EditorClassIdentifier: 
+  m_Key: Sueter
+  m_Catalog: {fileID: -8433760834845706857}
+--- !u!114 &4431301067117876915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd052539327467295d2009d33aa660, type: 3}
+  m_Name: Item_bota1
+  m_EditorClassIdentifier: 
+  m_DisplayName: Bota verde
+  m_Key: bota1
+  m_Tags:
+  - {fileID: -4457372723524942006}
+  m_Catalog: {fileID: 5887101314579155073}
+  m_StaticPropertyKeys:
+  - Damage
+  - SpriteLibraryLabel
+  m_StaticPropertyValues:
+  - <type>k__BackingField: 0
+    valueType:
+      longValue: 5
+    stringValue: 
+  - <type>k__BackingField: 3
+    valueType:
+      longValue: 0
+    stringValue: Green
+  m_DetailValues: []
+  m_InitialAllocation: 0
+  m_PropertyKeys: []
+  m_PropertyDefaultValues: []
 --- !u!114 &5887101314579155073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +533,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Database: {fileID: 11400000}
   m_Items:
-  - {fileID: -534283171470311619}
+  - {fileID: -6623355769228978922}
+  - {fileID: -1992208327932499700}
+  - {fileID: 2078566095085665897}
+  - {fileID: 4431301067117876915}
+  - {fileID: -806221138420948336}
+  - {fileID: 1943149209463153647}
+--- !u!114 &6025261198021240252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef78d1e65e02740dca774d4b2d1ecad2, type: 3}
+  m_Name: Detail_cuy1_Assets
+  m_EditorClassIdentifier: 
+  m_ItemDefinition: {fileID: 2078566095085665897}
+  m_Names:
+  - Prefab
+  m_Values:
+  - Kazumi
+--- !u!114 &6655026056945076468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Guante
+  m_EditorClassIdentifier: 
+  m_Key: Guante
+  m_Catalog: {fileID: -8433760834845706857}
+--- !u!114 &7329375536671869202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4178f7fa125e7644ba2a2d0c6300db1, type: 3}
+  m_Name: Tag_Habilidad
+  m_EditorClassIdentifier: 
+  m_Key: Habilidad
+  m_Catalog: {fileID: -8433760834845706857}
 --- !u!114 &8859541556717979059
 MonoBehaviour:
   m_ObjectHideFlags: 0

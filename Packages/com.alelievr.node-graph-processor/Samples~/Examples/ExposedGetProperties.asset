@@ -219,7 +219,11 @@ MonoBehaviour:
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     serializedValue:
+<<<<<<< HEAD
       serializedType: UnityEditor.MonoImporter, UnityEditor, Version=0.0.0.0, Culture=neutral,
+=======
+      serializedType: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
+>>>>>>> 1834eda40dd381be28ee7c530b27a31b525ca99a
         PublicKeyToken=null
       serializedName: 
       serializedValue: '{"value":{"instanceID":14012}}'
@@ -238,7 +242,13 @@ MonoBehaviour:
     input: 1
     settings:
       isHidden: 0
+<<<<<<< HEAD
   position: {x: 221, y: 167, z: 0}
   scale: {x: 1.3225, y: 1.3225, z: 1}
+=======
+  stickyNotes: []
+  position: {x: 116, y: 242, z: 0}
+  scale: {x: 0.65751624, y: 0.65751624, z: 1}
+>>>>>>> 1834eda40dd381be28ee7c530b27a31b525ca99a
   references:
     version: 1

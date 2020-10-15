@@ -32,7 +32,7 @@ namespace PlayFab.PfEditor
                 if (_instance != null)
                     return _instance;
 
-                _instance = CreateInstance<PlayFabEditorPrefsSO>();
+                /*_instance = CreateInstance<PlayFabEditorPrefsSO>();
                 if (!Directory.Exists(Path.Combine(Application.dataPath, "PlayFabEditorExtensions/Editor/Resources")))
                     Directory.CreateDirectory(Path.Combine(Application.dataPath, "PlayFabEditorExtensions/Editor/Resources"));
 
@@ -43,7 +43,7 @@ namespace PlayFab.PfEditor
 
                 AssetDatabase.CreateAsset(_instance, "Assets/PlayFabEditorExtensions/Editor/Resources/PlayFabEditorPrefsSO.asset");
                 AssetDatabase.SaveAssets();
-                Debug.LogWarning("Created missing PlayFabEditorPrefsSO file");
+                Debug.LogWarning("Created missing PlayFabEditorPrefsSO file");*/
                 return _instance;
             }
         }

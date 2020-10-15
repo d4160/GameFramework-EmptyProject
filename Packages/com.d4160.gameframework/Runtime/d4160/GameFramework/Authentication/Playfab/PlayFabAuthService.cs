@@ -4,7 +4,9 @@ using PlayFab;
 using PlayFab.ClientModels;
 using LoginResult = PlayFab.ClientModels.LoginResult;
 using System;
+#if PHOTON_UNITY_NETWORKING
 using Photon.Realtime;
+#endif
 using UnityEngine.Promise;
 
 #if FACEBOOK
@@ -89,7 +91,7 @@ namespace d4160.GameFramework.Authentication
 
         private static PlayFabAuthService _instance;
 
-        public PlayFabAuthService()
+        private PlayFabAuthService()
         {
             _instance = this;
         }
@@ -885,6 +887,7 @@ namespace d4160.GameFramework.Authentication
                 photonAuth.AuthType = CustomAuthenticationType.Custom;
                 photonAuth.Token = rc.PhotonCustomAuthenticationToken;
                 photonAuth.CustomServiceId = _playFabId;
+                photonAuth.DisplayName = DisplayName;
                 photonAuth.Authenticate();
 
                 result?.Invoke(rc);

@@ -100,6 +100,10 @@ MonoBehaviour:
       serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   exposedParameters: []
+<<<<<<< HEAD
+=======
+  stickyNotes: []
+>>>>>>> 1834eda40dd381be28ee7c530b27a31b525ca99a
   position: {x: -148, y: -124, z: 0}
   scale: {x: 1, y: 1, z: 1}
   references:

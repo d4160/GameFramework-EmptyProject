@@ -41,6 +41,12 @@ public class DrawerFieldTestNode : BaseNode
 	[Input(name = "Rigidbody"), ShowAsDrawer]
 	public Rigidbody rigidbody;
 
+<<<<<<< HEAD
+=======
+	[Input("Layer Mask"), ShowAsDrawer]
+	public LayerMask layerMask;
+
+>>>>>>> 1834eda40dd381be28ee7c530b27a31b525ca99a
 	public override string name => "Drawer Field Test";
 
 	protected override void Process() {}
