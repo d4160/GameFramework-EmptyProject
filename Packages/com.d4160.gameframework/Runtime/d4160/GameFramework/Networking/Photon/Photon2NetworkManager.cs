@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using Photon.Pun;
 using Photon.Realtime;
+using UltEvents;
 using UnityEditor;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -29,21 +30,27 @@ namespace d4160.GameFramework.Networking
     {
         [SerializeField] protected bool _automaticallySyncScene = false;
 
-        [Foldout("Room")]
+        [Foldout("Room Options")]
         [SerializeField] protected JoinRoomOptions _joinRoomOption = JoinRoomOptions.JoinRandom;
         [ShowIf("IsRoomNameNeeded")]
-        [Foldout("Room")]
+        [Foldout("Room Options")]
         [SerializeField] protected string _roomName;
-        [Foldout("Room")]
+        [Foldout("Room Options")]
         [SerializeField] protected byte _maxPlayersPerRoom = 4;
-        [Foldout("Room")]
+        [Foldout("Room Options")]
         [SerializeField] protected bool _becomeInactiveWhenLeaveRoom = true;
 
-        [Foldout("Lobby")]
+        [Foldout("Lobby Options")]
         [SerializeField] protected JoinLobbyOptions _joinLobbyOption = JoinLobbyOptions.JoinDefault;
         [ShowIf("IsLobbyNameNeeded")]
-        [Foldout("Lobby")]
+        [Foldout("Lobby Options")]
         [SerializeField] protected string _lobbyName;
+
+        [Header("EVENTS")]
+        [SerializeField] private UltEvent _onConnectedToMaster;
+        [SerializeField] private UltEvent _onDisconnected;
+        [SerializeField] private UltEvent _onJoinedRoom;
+        [SerializeField] private UltEvent _onLeftRoom;
 
         public bool IsConnected => PhotonNetwork.IsConnected;
         public bool IsConnectedAndReady => PhotonNetwork.IsConnectedAndReady;
@@ -114,11 +121,15 @@ namespace d4160.GameFramework.Networking
         public override void OnConnectedToMaster()
         {
             Debug.Log($"OnConnectedToMaster, connected: {PhotonNetwork.IsConnected} and ready: {PhotonNetwork.IsConnectedAndReady}");
+
+            _onConnectedToMaster?.Invoke();
         }
 
         public override void OnDisconnected(DisconnectCause cause)
         {
             Debug.Log($"OnDisconnected, cause: {cause}");
+
+            _onDisconnected?.Invoke();
         }
 
         public override void OnRegionListReceived(RegionHandler regionHandler)
@@ -160,6 +171,8 @@ namespace d4160.GameFramework.Networking
             base.OnJoinedRoom();
 
             Debug.Log($"OnJoinedRoom");
+
+            _onJoinedRoom?.Invoke();
         }
 
         public override void OnLeftRoom()
@@ -167,6 +180,8 @@ namespace d4160.GameFramework.Networking
             base.OnLeftRoom();
 
             Debug.Log($"OnLeftRoom");
+
+            _onLeftRoom?.Invoke();
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)

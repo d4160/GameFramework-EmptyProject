@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using d4160.Core.MonoBehaviours.ObjectCollections;
 using NaughtyAttributes;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace d4160.Core.MonoBehaviours
 {
-    public abstract class UnityObjectList<T> : UnityObjectList, IList<T> where T : Object
+    public abstract class UnityObjectList<T> : UnityObjectList, IList<T>, IUnityObjectList<T> where T : Object
     {
         [BoxGroup("List")]
         [SerializeField] protected List<T> _items = new List<T>();
 
         protected int _currentItemIndexToUpdate = 0;
+
+        public IUnityObjectProvider<T> GenericProvider => _provider as IUnityObjectProvider<T>;
 
         public override void CheckItemsFromContainer()
         {
@@ -46,11 +49,32 @@ namespace d4160.Core.MonoBehaviours
                         }
                         break;
 
+                    case RecicleOption.AddAndHide:
+                        if (typeof(T) == typeof(GameObject))
+                        {
+                            Add(child.gameObject as T);
+                            child.gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            var tMono = child.GetComponent<T>();
+                            if (tMono)
+                            {
+                                Add(tMono);
+                                child.gameObject.SetActive(false);
+                            }
+                            else
+                            {
+                                DestroyUnityObject(child);
+                            }
+                        }
+                        break;
+
                     case RecicleOption.Destroy:
                         DestroyUnityObject(child);
                         break;
 
-                    case RecicleOption.Reuse:
+                    case RecicleOption.ReturnToPool:
                         if (typeof(T) == typeof(GameObject))
                         {
                             RemoveUnityObject(child.gameObject as T);
@@ -130,17 +154,29 @@ namespace d4160.Core.MonoBehaviours
                         return newT;
                     }
                 }
+
+                var unityObjectItem = go.GetComponent<UnityObjectItem<T>>();
+                if (unityObjectItem)
+                {
+                    unityObjectItem.List = this;
+                }
             }
             else if (_provider is IUnityObjectProvider<T> tProvider)
             {
                 T newT = tProvider.Spawn(position, rotation, parent ?? _itemsContainer, worldPositionStays);
                 Add(newT);
 
-                if (_normalizeScale)
+                if (newT is Component c)
                 {
-                    if (newT is Component c)
+                    if (_normalizeScale)
                     {
                         c.transform.localScale = Vector3.one;
+                    }
+
+                    var unityObjectItem = c.GetComponent<UnityObjectItem<T>>();
+                    if (unityObjectItem)
+                    {
+                        unityObjectItem.List = this;
                     }
                 }
 
@@ -196,7 +232,7 @@ namespace d4160.Core.MonoBehaviours
             return AddOrUpdateObject(Vector3.zero, Quaternion.identity, null, false);
         }
 
-        public void DisableOtherAfterUpdate()
+        public void DisableOtherFromUpdateIndex()
         {
             for (int i = _currentItemIndexToUpdate; i < Count; i++)
             {
@@ -706,12 +742,14 @@ namespace d4160.Core.MonoBehaviours
         #endregion
     }
 
-    public abstract class UnityObjectListSingleton<S, T> : UnityObjectListSingleton<S>, IList<T> where T : Object where S : MonoBehaviour
+    public abstract class UnityObjectListSingleton<S, T> : UnityObjectListSingleton<S>, IUnityObjectList<T>, IList<T> where T : Object where S : MonoBehaviour
     {
         [BoxGroup("List")]
         [SerializeField] protected List<T> _items = new List<T>();
 
         protected int _currentItemIndexToUpdate = 0;
+
+        public IUnityObjectProvider<T> GenericProvider => _provider as IUnityObjectProvider<T>;
 
         public override void CheckItemsFromContainer()
         {
@@ -749,7 +787,7 @@ namespace d4160.Core.MonoBehaviours
                         DestroyUnityObject(child);
                         break;
 
-                    case RecicleOption.Reuse:
+                    case RecicleOption.ReturnToPool:
                         if (typeof(T) == typeof(GameObject))
                         {
                             RemoveUnityObject(child.gameObject as T);
@@ -829,17 +867,29 @@ namespace d4160.Core.MonoBehaviours
                         return newT;
                     }
                 }
+
+                var unityObjectItem = go.GetComponent<UnityObjectItem<T>>();
+                if (unityObjectItem)
+                {
+                    unityObjectItem.List = this;
+                }
             }
             else if (_provider is IUnityObjectProvider<T> tProvider)
             {
                 T newT = tProvider.Spawn(position, rotation, parent ?? _itemsContainer, worldPositionStays);
                 Add(newT);
 
-                if (_normalizeScale)
+                if (newT is Component c)
                 {
-                    if (newT is Component c)
+                    if (_normalizeScale)
                     {
                         c.transform.localScale = Vector3.one;
+                    }
+
+                    var unityObjectItem = c.GetComponent<UnityObjectItem<T>>();
+                    if (unityObjectItem)
+                    {
+                        unityObjectItem.List = this;
                     }
                 }
 
@@ -1476,11 +1526,9 @@ namespace d4160.Core.MonoBehaviours
 
             if (_spawnWhenInit)
             {
-                FillList();
+                SpawnToList();
             }
         }
-
-        public new abstract void FillList();
 
         public virtual T1 AddObjectAndSetData(T2 data, Vector3 position, Quaternion rotation, Transform parent = null, bool worldPositionStays = true)
         {
@@ -1536,6 +1584,8 @@ namespace d4160.Core.MonoBehaviours
         [BoxGroup("Initialization")]
         [SerializeField] protected bool _spawnWhenInit = true;
 
+        public IUnityObjectProvider<GameObject> GameObjectProvider => _provider as IUnityObjectProvider<GameObject>;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -1587,8 +1637,6 @@ namespace d4160.Core.MonoBehaviours
         [BoxGroup("Basic")]
         [SerializeField] protected Transform _itemsContainer;
         [BoxGroup("Basic")]
-        [SerializeField] protected RecicleOption _currentContainerRecicleOption = RecicleOption.None;
-        [BoxGroup("Basic")]
         [SerializeField] protected bool _allowDuplicateItems = false;
         [BoxGroup("Basic")]
         [SerializeField] protected bool _normalizeScale = true;
@@ -1599,9 +1647,14 @@ namespace d4160.Core.MonoBehaviours
         [BoxGroup("Initialization")]
         [SerializeField] protected UnityInitMethod _initMethod;
         [BoxGroup("Initialization")]
+        [SerializeField] protected RecicleOption _currentContainerRecicleOption = RecicleOption.None;
+        [BoxGroup("Initialization")]
         [SerializeField] protected bool _clearListWhenInit = false;
         [BoxGroup("Initialization")]
+        [Tooltip("When checked, call SpawnList method by default when init.")]
         [SerializeField] protected bool _spawnWhenInit = true;
+
+        public IUnityObjectProvider<GameObject> GameObjectProvider => _provider as IUnityObjectProvider<GameObject>;
 
         protected void Awake()
         {
@@ -1636,13 +1689,13 @@ namespace d4160.Core.MonoBehaviours
 
             if (_spawnWhenInit)
             {
-                FillList();
+                SpawnToList();
             }
         }
 
         public virtual void CheckItemsFromContainer() { }
 
-        public virtual void FillList() { }
+        public virtual void SpawnToList() { }
 
         public virtual void Clear() { }
     }

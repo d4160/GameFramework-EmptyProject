@@ -1,57 +1,114 @@
-﻿using d4160.GameFramework.Authentication;
+﻿using System;
+using System.Collections;
+using d4160.Core.MonoBehaviours;
+using d4160.GameFramework.Authentication;
 using NaughtyAttributes;
 using UltEvents;
 using UnityEngine;
+using UnityEngine.Promise;
 
 namespace Authentication.PlayFab
 {
-    public class PlayFabAuthController : MonoBehaviour
+    public class PlayFabAuthController : Singleton<PlayFabAuthController>
     {
         [SerializeField] private string _displayName;
+        [SerializeField] private string _email;
+        [SerializeField] private string _password;
 
-        [Header("EVENTS")] [SerializeField] private UltEvent _onAuthenticated; 
+        [Header("EVENTS")] 
+        [SerializeField] private UltEvent _onAuthComplete;
+        [SerializeField] private UltEvent _onAuthFail;
 
-        private PlayFabAuthService _authService = PlayFabAuthService.Instance;
+        private readonly PlayFabAuthService _authService = PlayFabAuthService.Instance;
 
-        void Start()
+        [Button]
+        public void Login()
         {
-            Authenticate();
+            Authenticate(_email, _password, PlayFabAuthTypes.EmailAndPassword);
         }
 
         [Button]
-        public void Authenticate()
+        public void Register()
         {
-            _authService.AuthType = PlayFabAuthTypes.Silent;
-            _authService.DisplayName = _displayName;
+            Authenticate(_email, _password, PlayFabAuthTypes.RegisterPlayFabAccount);
+        }
+
+        public void Authenticate(string email, string password, PlayFabAuthTypes type)
+        {
+            _authService.SetDisplayName(null);
+            _authService.AuthType = type;
+            _authService.Email = email;
+            _authService.Password = password;
             _authService.AuthenticateToPhotonAfterLogin = true;
 
-            GameAuth.Authenticate(_authService, () =>
-            {
-                UpdateDisplayName();
+            Deferred def = GameAuthSdk.Authenticate(_authService);
 
-                _onAuthenticated?.Invoke();
-            });
+            if (def.isDone)
+            {
+                if (def.isFulfilled)
+                    _onAuthComplete?.Invoke();
+                else
+                {
+                    Debug.LogError(def.error.Message);
+                    _onAuthFail?.Invoke();
+                }
+            }
+            else
+            {
+                IEnumerator Routine(Deferred aDef)
+                {
+                    yield return aDef.Wait();
+
+                    if(aDef.isFulfilled)
+                        _onAuthComplete?.Invoke();
+                    else
+                    {
+                        Debug.LogError(aDef.error.Message);
+                        _onAuthFail?.Invoke();
+                    }
+                }
+
+                StartCoroutine(routine: Routine(def));
+            }
         }
 
         [Button]
         public void Unauthenticate()
         {
-            GameAuth.Unauthenticate();
+            GameAuthSdk.Unauthenticate();
         }
 
         [Button]
         public void UpdateDisplayName()
         {
-            _authService.DisplayName = _displayName;
+            UpdateDisplayName(_displayName);
+        }
 
-            _authService.UpdateDisplayName(
+        public void UpdateDisplayName(string displayName, Action onComplete = null, Action onFail = null)
+        {
+            _authService.AuthenticateToPhotonAfterLogin = true;
+
+            _authService.UpdateDisplayName(displayName,
                 (r) =>
                 {
                     Debug.Log($"DisplayName updated to: {r.DisplayName}");
+                    onComplete?.Invoke();
                 }, (e) =>
                 {
                     Debug.LogError(e.ErrorMessage);
+                    onFail?.Invoke();
                 });
+        }
+
+        public void GetDisplayName(Action<string> result)
+        {
+            _authService.GetDisplayName((r) =>
+            {
+                result?.Invoke(r);
+            }, (e) =>
+            {
+                Debug.Log(e.ErrorMessage);
+            });
         }
     }
 }

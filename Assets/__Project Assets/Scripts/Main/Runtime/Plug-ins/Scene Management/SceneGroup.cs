@@ -1,18 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using d4160.GameFramework.SceneManagement;
+using NaughtyAttributes;
 using UnityEngine;
 
-public class SceneGroup : MonoBehaviour
+namespace Scene_Management
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SceneGroup : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private SceneListDefinition _scenes;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            LoadScenes();
+        }
+
+        [Button]
+        public void LoadScenes()
+        {
+            _scenes.LoadScenesAfterAnother();
+        }
     }
 }

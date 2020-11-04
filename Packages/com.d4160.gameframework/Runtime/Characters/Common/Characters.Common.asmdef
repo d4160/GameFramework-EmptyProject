@@ -1,0 +1,17 @@
+{
+    "name": "Characters.Common",
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:abd02ea2a3d741f48b1c16eb7025fec5",
+        "GUID:c4dc1bf54765923448958a3c29a7c213"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

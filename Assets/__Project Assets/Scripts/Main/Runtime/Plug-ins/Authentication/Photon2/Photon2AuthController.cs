@@ -13,7 +13,7 @@ namespace Authentication.Photon2
         [Button]
         public void UpdateDisplayName()
         {
-            _authService.DisplayName = _displayName;
+            _authService.SetDisplayName(_displayName);
 
             Debug.Log($"DisplayName updated to: {_displayName}");
         }

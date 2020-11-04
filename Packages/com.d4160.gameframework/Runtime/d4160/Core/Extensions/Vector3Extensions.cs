@@ -1,4 +1,4 @@
-﻿namespace d4160.Core
+﻿namespace d4160.Core.Extensions
 {
     using System.Collections.Generic;
     using UnityEngine;
@@ -27,7 +27,7 @@
         /// <returns>The Vector3 result of the ComponentDivide.</returns>
         /// <param name="v0">The numerator Vector3</param>
         /// <param name="v1">The denominator Vector3</param>
-        static public Vector3 ComponentDivide(this Vector3 v0, Vector3 v1)
+        public static Vector3 ComponentDivide(this Vector3 v0, Vector3 v1)
         {
             Vector3 vRes = v0;
 
@@ -47,7 +47,7 @@
             return vRes;
         }
 
-        static public Vector3 ComponentMultiply(this Vector3 v0, Vector3 v1)
+        public static Vector3 ComponentMultiply(this Vector3 v0, Vector3 v1)
         {
             Vector3 vRes = v0;
 
@@ -379,6 +379,41 @@
         public static Vector3 DirectionTo(this Vector3 v, Vector3 to)
         {
             return (to - v).normalized;
+        }
+
+        public static Vector3 DirectionFrom(this Vector3 v, Vector3 from)
+        {
+            return (v - from).normalized;
+        }
+
+        /// <summary>
+        /// Gets the magnitude on an axis given a <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <param name="axis">The axis on which to calculate the magnitude.</param>
+        /// <returns>The magnitude.</returns>
+        public static float GetMagnitudeOnAxis(this Vector3 vector, Vector3 axis)
+        {
+            var vectorMagnitude = vector.magnitude;
+            if (vectorMagnitude <= 0)
+            {
+                return 0;
+            }
+            var dot = Vector3.Dot(axis, vector / vectorMagnitude);
+            var val = dot * vectorMagnitude;
+            return val;
+        }
+
+        /// <summary>
+        /// Get the square magnitude from vectorA to vectorB.
+        /// </summary>
+        /// <returns>The sqr magnitude.</returns>
+        /// <param name="vectorA">First vector.</param>
+        /// <param name="vectorB">Second vector.</param>
+        public static float SqrMagnitudeFrom(this Vector3 vectorA, Vector3 vectorB)
+        {
+            var diff = vectorA - vectorB;
+            return diff.sqrMagnitude;
         }
     }
 }

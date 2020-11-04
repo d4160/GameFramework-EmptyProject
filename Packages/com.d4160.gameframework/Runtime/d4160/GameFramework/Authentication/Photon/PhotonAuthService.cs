@@ -7,7 +7,7 @@ using UnityEngine.Promise;
 
 namespace d4160.GameFramework.Authentication
 {
-    public class PhotonAuthService : IAuthService
+    public class PhotonAuthService : BaseAuthService
     {
         public delegate void DisplayAuthenticationEvent();
 
@@ -25,7 +25,7 @@ namespace d4160.GameFramework.Authentication
         private const string PhotonAuthTypeKey = "PhotonAuthType";
         private const string PhotonNickNameKey = "PhotonNickNameKey";
 
-        public string DisplayName
+        public override string DisplayName
         {
             get
             {
@@ -36,7 +36,7 @@ namespace d4160.GameFramework.Authentication
 
                 return nickname;
             }
-            set
+            protected set
             {
                 PhotonNetwork.NickName = value;
 
@@ -44,8 +44,11 @@ namespace d4160.GameFramework.Authentication
             }
         }
 
-        public string Id => Token;
-        
+        public override string Id => CustomServiceId;
+        public override string SessionTicket => Token;
+
+        public override bool HasSession => !string.IsNullOrEmpty(CustomServiceId) && !string.IsNullOrEmpty(Token);
+
         private Completer _completer;
 
         /// <summary>
@@ -84,7 +87,7 @@ namespace d4160.GameFramework.Authentication
             }
         }
 
-        public void Authenticate(Completer completer)
+        public override void Authenticate(Completer completer)
         {
             var authType = AuthType;
 
@@ -102,6 +105,11 @@ namespace d4160.GameFramework.Authentication
                     OnDisplayAuthentication?.Invoke();
                     break;
             }
+        }
+
+        public void SetDisplayName(string displayName)
+        {
+            DisplayName = displayName;
         }
 
         protected void AuthenticateWithCustomService()
@@ -130,7 +138,7 @@ namespace d4160.GameFramework.Authentication
             OnAuthSuccess?.Invoke();
         }
 
-        public void Unauthenticate()
+        public override void Unauthenticate()
         {
             Token = null;
             CustomServiceId = null;

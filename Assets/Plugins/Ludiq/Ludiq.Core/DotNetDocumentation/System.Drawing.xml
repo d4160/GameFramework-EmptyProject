@@ -17413,8 +17413,8 @@
     <member name="F:System.Drawing.Printing.PaperSourceKind.LargeCapacity">
       <summary>The printer's large-capacity bin.</summary>
     </member>
-    <member name="F:System.Drawing.Printing.PaperSourceKind.Csceneste">
-      <summary>A paper csceneste.</summary>
+    <member name="F:System.Drawing.Printing.PaperSourceKind.Cassette">
+      <summary>A paper cassette.</summary>
     </member>
     <member name="F:System.Drawing.Printing.PaperSourceKind.FormSource">
       <summary>The printer's default input bin.</summary>

@@ -7,8 +7,10 @@ namespace d4160.GameFramework.Authentication
     /// </summary>
     public abstract class BaseAuthService : IAuthService
     {
-        public string DisplayName { get; protected set; }
-        public string Id { get; protected set; }
+        public virtual string DisplayName { get; protected set; }
+        public virtual string Id { get; protected set; }
+        public virtual bool HasSession { get; protected set; }
+        public virtual string SessionTicket { get; protected set; }
 
         /// <inheritdoc />
         public abstract void Authenticate(Completer completer);

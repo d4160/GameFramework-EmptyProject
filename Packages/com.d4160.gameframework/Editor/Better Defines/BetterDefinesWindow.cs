@@ -77,9 +77,14 @@ namespace BetterDefines.Editor
             }
             GUI.enabled = true;
 
-            if (GUILayout.Button(new GUIContent("Update", "Add and updates the defines in the selected BuildTargetGroup (PlayerSettings)")))
+            if (GUILayout.Button(new GUIContent("Sync", "Add and updates the defines in the selected BuildTargetGroup (PlayerSettings)")))
             { 
-                UpdateDefines();
+                SyncDefines();
+            }
+
+            if (GUILayout.Button(new GUIContent("Save All", "Add and updates the defines in the selected BuildTargetGroup (PlayerSettings)")))
+            {
+                SaveAll();
             }
 
             if (GUILayout.Button(new GUIContent("Select", "Select the BetterDefinesSettings asset")))
@@ -98,30 +103,47 @@ namespace BetterDefines.Editor
             EditorGUILayout.EndVertical();
         }
 
-        private void UpdateDefines()
+        private void SaveAll()
         {
+            var defines = BetterDefinesSettings.Instance.Defines;
+            for (int i = 0; i < defines.Count; i++)
+            {
+                DefinesReorderableList.ApplySelectedConfig(defines[i].Define);
+            }
+        }
+
+        private void SyncDefines()
+        {
+            var selectedPlatformId = PlatformUtils.GetIdByBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            var definesSettings = BetterDefinesSettings.Instance;
+            var assetDefines = definesSettings.Defines;
+
+            for (int i = 0; i < assetDefines.Count; i++)
+            {
+                assetDefines[i].EnableForPlatform(selectedPlatformId, false);
+            }
+
             var defines = BetterDefinesUtils.GetSelectedTargetGroupDefines();
+
             for (int i = 0; i < defines.Length; i++)
             {
                 var define = defines[i];
                 var isAlreadyAdded = BetterDefinesSettings.Instance.IsDefinePresent(define);
-                var selectedPlatformId = PlatformUtils.GetIdByBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
-                var definesSettings = BetterDefinesSettings.Instance;
 
                 if (isAlreadyAdded)
                 {
-                    if (!definesSettings.GetDefineState(define, selectedPlatformId))
-                    {
-                        definesSettings.SetDefineState(define, selectedPlatformId, true);
-                    }
+                    //if (!definesSettings.GetDefineState(define, selectedPlatformId))
+                    //{
+                    definesSettings.SetDefineState(define, selectedPlatformId, true);
+                    //}
                 }
                 else
                 {
                     AddElement(define);
-
-                    UpdateDefines();
                 }
-            }  
+            }
+
+            definesSettings.SetScriptableDirty();
         }
 
         private void AddElement(string validDefine)
@@ -136,7 +158,7 @@ namespace BetterDefines.Editor
             var defineSettings = customDefine.FindPropertyRelative("StatesForPlatforms");
             for (var i = 0; i < defineSettings.arraySize; i++)
             {
-                defineSettings.GetArrayElementAtIndex(i).FindPropertyRelative("IsEnabled").boolValue = false;
+                defineSettings.GetArrayElementAtIndex(i).FindPropertyRelative("IsEnabled").boolValue = true;
             }
 
             settingsSerializedObject.ApplyModifiedProperties();

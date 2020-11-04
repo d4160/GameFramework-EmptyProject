@@ -15,10 +15,7 @@ namespace BetterDefines.Editor.Entity
         public List<CustomDefine> Defines;
         public List<PlatformEnabledState> EnabledPlatformsGlobal;
 
-        public static BetterDefinesSettings Instance
-        {
-            get { return _instance ?? (_instance = Resources.Load<BetterDefinesSettings>(SETTINGS_RESOURCE_NAME)); }
-        }
+        public static BetterDefinesSettings Instance => _instance ?? (_instance = Resources.Load<BetterDefinesSettings>(SETTINGS_RESOURCE_NAME));
 
         public bool IsDefinePresent(string define)
         {
@@ -78,5 +75,10 @@ namespace BetterDefines.Editor.Entity
             return defineSymbol != null && defineSymbol.IsPlatformEnabled(platformId);
         }
         #endregion
+
+        public void SetScriptableDirty()
+        {
+            EditorUtility.SetDirty(this);
+        }
     }
 }

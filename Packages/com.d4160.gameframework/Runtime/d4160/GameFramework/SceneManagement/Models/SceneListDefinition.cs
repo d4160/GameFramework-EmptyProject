@@ -31,8 +31,11 @@ namespace d4160.GameFramework.SceneManagement
                 { "None", string.Empty }
             };
 
-            for (int i = 0; i < _scenes.Length; i++)
+            for (var i = 0; i < _scenes.Length; i++)
             {
+                if(_scenes[i] == null || !_scenes[i].editorAsset || string.IsNullOrEmpty(_scenes[i].AssetGUID))
+                    continue;
+                
                 values.Add(_scenes[i].editorAsset.name, _scenes[i].AssetGUID);
             }
 

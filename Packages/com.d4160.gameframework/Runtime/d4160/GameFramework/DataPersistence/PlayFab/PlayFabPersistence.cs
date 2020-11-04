@@ -99,7 +99,7 @@ namespace d4160.GameFramework.DataPersistence
                     else
                     {
                         Debug.LogWarning($"The PlayerData (Title) with key '{Key}' (also backup) is missing in player: '{_playFabId}'. So GameFoundation has default data from Database.");
-                        onLoadCompleted?.Invoke(GameFoundationDatabaseSettings.database.CreateDefaultData());
+                        onLoadCompleted?.Invoke(CatalogSettings.catalogAsset.CreateDefaultData());
                     }
                 }, (error) =>
                 {

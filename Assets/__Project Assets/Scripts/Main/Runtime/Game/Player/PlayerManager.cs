@@ -1,99 +1,157 @@
-﻿using d4160.Core;
-using d4160.Core.MonoBehaviours;
-using Game.Character_Inventory;
-using Game.Health;
-using NaughtyAttributes;
-using PlayFab.ClientModels;
-using Game.Menus;
-using Game.UI;
-using UnityEngine;
-using UnityEngine.GameFoundation;
-using UnityEngine.InputSystem;
+﻿//using System.Collections.Generic;
+//using d4160.Core;
+//using d4160.Core.MonoBehaviours;
+//using Game.World;
+//using NaughtyAttributes;
+//using Photon.Pun;
+////using Photon.Voice.Unity;
+//using UltEvents;
+//using UnityEngine;
+//using UnityEngine.GameFoundation;
 
-namespace Game.Player
-{
-    public class PlayerManager : UnityObjectListSingleton<PlayerManager, GameObject>
-    {
-        [SerializeField] private PlayerInputManager _inputManager;
-        [SerializeField] private Transform[] _spawnPoints;
-        [SerializeField] private string[] _inputSchemes;
-        [SerializeField] private HealthUI[] _healthUIs;
-        [SerializeField] private CombatHUD _combatHUD;
+//namespace Game._Player
+//{
+//    public class PlayerManager : UnityObjectListSingleton<PlayerManager, GameObject>
+//    {
+//        [SerializeField] private Recorder _recorder;
 
-        protected override void Start()
-        {
-            base.Start();
+//        [Header("SPAWN")]
+//        [SerializeField] private Transform[] _studentSpawnPoints;
+//        [SerializeField] private Transform[] _teacherSpawnPoints;
 
-            JoinPlayer();
-            JoinPlayer();
-        }
+//        [Header("NETWORKING")]
+//        [SerializeField] private readonly List<PlayerSync> _remotePlayers = new List<PlayerSync>();
 
-        [Button]
-        public void JoinPlayer()
-        {
-            if (Count >= _inputManager.maxPlayerCount)
-            {
-                return;
-            }
+//        [Header("EVENTS")] [SerializeField] private UltEvent _onPlayerDataLoadComplete;
 
-            Transform spawnPoint = _spawnPoints[Count];
-            GameObject obj = AddObject(spawnPoint.position, spawnPoint.rotation);
+//        private InventoryItem _playerItem;
 
-            string inputSchema = _inputSchemes[Count - 1];
-            var playerController = obj.GetComponent<PlayerController>();
-            playerController?.SwitchCurrentControlScheme(inputSchema);
+//        private GameObject _localPlayer;
+//        private PhotonView _localPhotonView;
 
-            HealthUI healthUI = _healthUIs[Count - 1];
-            var healthSystem = obj.GetComponentInChildren<HealthSystem>();
-            healthUI.RegisterEvent(healthSystem);
+//        public GameObject LocalPlayer => _localPlayer;
+//        public PhotonView LocalPhotonView => _localPhotonView;
 
-            if (Count == 2)
-            {
-                var newScale = playerController.Character.transform.localScale;
-                newScale.x *= -1;
+//        public string LocalPlayerGenre
+//        {
+//            get => _playerItem?.GetMutableProperty("Genre");
+//            set
+//            {
+//                if (value != null) _playerItem?.SetMutableProperty("Genre", value);
+//            }
+//        }
 
-                playerController.Character.transform.localScale = newScale;
-            }
+//        public int? LocalPlayerRole 
+//        { 
+//            get =>_playerItem?.GetMutableProperty("Role");
+//            set
+//            {
+//                if (value != null) _playerItem?.SetMutableProperty("Role", value.Value);
+//            }
+//        }
 
-            playerController.Character.SetPlayer(Count - 1);
+//        public Recorder Recorder => _recorder;
 
-            if (!GameFoundation.IsInitialized)
-            {
-                Debug.LogError("You need to initialize GameFoundation first.");
-                return;
-            }
+//        [Button]
+//        public void LoadPlayerData()
+//        {
+//            Tag playerTag = GameFoundationSdk.tags.Find("Player");
+//            List<InventoryItem> playerItems = new List<InventoryItem>();
+//            GameFoundationSdk.inventory.FindItems(playerTag, playerItems);
 
-            var characters = InventoryManager.FindItemsByTag("Personaje");
-            if (characters.Length > 1)
-            {
-                var player1 = characters[Count - 1];
+//            if (playerItems.Count > 0)
+//                _playerItem = playerItems[0];
 
-                //string glove = player1.GetProperty("Guante");
-                //string boot = player1.GetProperty("Bota");
-                //int eyeColor = player1.GetProperty("EyeColor");
-                //int bodyColor = player1.GetProperty("BodyColor");
-                //int headColor = player1.GetProperty("HeadColor");
-                string name = player1.GetProperty("Name");
+//            if (_playerItem == null)
+//            {
+//                GameParameter playerParameter = GameFoundationSdk.catalog.Find<GameParameter>("Player");
+//                Property genreParam = playerParameter["Genre"];
+//                Property roleParam = playerParameter["Role"];
 
-                //var characterInventory = obj.GetComponentInChildren<CharacterInventorySystem>();
-                //characterInventory.SetBoots(boot);
-                //characterInventory.SetGloves(glove);
-                //characterInventory.ChangeEyeColor(PlayerSelectionMenu.EyeColors[eyeColor]);
-                //characterInventory.ChangeBodyColor(PlayerSelectionMenu.BodyColors[bodyColor]);
-                //characterInventory.ChangeHeadColor(PlayerSelectionMenu.HeadColors[headColor]);
+//                InventoryItemDefinition playerItemDef =
+//                    GameFoundationSdk.catalog.Find<InventoryItemDefinition>("player");
+//                _playerItem = GameFoundationSdk.inventory.CreateItem(playerItemDef);
+//                _playerItem.SetMutableProperty("Genre", genreParam);
+//                _playerItem.SetMutableProperty("Role", roleParam);
 
-                _combatHUD.SetPlayerName(name, Count - 1);
-            }
-        }
+//                Debug.Log("Added new Player Item.", gameObject);
+//            }
+//            else
+//            {
+//                Debug.Log("Player Item loaded.", gameObject);
+//            }
 
-        public void OnPlayerJoined(PlayerInput player)
-        {
-            Debug.Log($"OnPlayerJoined {player.name}");
-        }
+//            _onPlayerDataLoadComplete?.Invoke();
+//        }
 
-        public void OnPlayerLeft(PlayerInput player)
-        {
-            Debug.Log($"OnPlayerLeft {player.name}");
-        }
-    }
-}
+//        [Button]
+//        public void SetDefaultPlayerData()
+//        {
+//            GameParameter playerParameter = GameFoundationSdk.catalog.Find<GameParameter>("Player");
+//            Property genreParam = playerParameter["Genre"];
+//            Property roleParam = playerParameter["Role"];
+
+//            SetPlayerData(roleParam, genreParam.ToString()[0]);
+//        }
+
+//        public void SetPlayerData(int role, char genre)
+//        {
+//            if (_playerItem == null)
+//            {
+//                Debug.LogError("An item for player is missing, load one first", gameObject);
+//                return;
+//            }
+
+//            _playerItem.SetMutableProperty("Genre", genre);
+//            _playerItem.SetMutableProperty("Role", role);
+//        }
+
+//        [Button]
+//        public void InstanceCharacter()
+//        {
+//            var provider = GameObjectProvider as PlayerProvider;
+
+//            if (LocalPlayerRole.HasValue && !string.IsNullOrEmpty(LocalPlayerGenre) && provider != null)
+//            {
+//                provider.SelectPool(LocalPlayerRole.Value, LocalPlayerGenre);
+
+//                Transform randomLocation = LocalPlayerRole == 1 ? _studentSpawnPoints.Random() : _teacherSpawnPoints.Random();
+//                _localPlayer = AddObject(randomLocation.position, randomLocation.rotation);
+
+//                CampusManager.Instance.SetActiveClassRoom(true);
+//            }
+//        }
+
+//        [Button]
+//        public void DestroyCharacter()
+//        {
+//            Remove(_localPlayer);
+//        }
+
+//        public void AddRemotePlayer(PlayerSync remotePlayer)
+//        {
+//            if (!_remotePlayers.Contains(remotePlayer))
+//            {
+//                _remotePlayers.Add(remotePlayer);
+//            }
+//        }
+
+//        public void RemoveRemotePlayer(PlayerSync remotePlayer)
+//        {
+//            _remotePlayers.Remove(remotePlayer);
+//        }
+
+//        public void RegisterLocalPhotonView(PlayerSync localSync)
+//        {
+//            _localPhotonView = localSync.photonView;
+//        }
+
+//        [Button]
+//        public void ResetData()
+//        {
+//            _playerItem = null;
+//        }
+
+        
+//    }
+//}

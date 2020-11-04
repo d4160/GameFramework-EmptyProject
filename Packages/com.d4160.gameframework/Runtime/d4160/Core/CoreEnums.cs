@@ -27,7 +27,8 @@
     {
         None,
         Add,
+        AddAndHide,
         Destroy,
-        Reuse
+        ReturnToPool
     }
 }

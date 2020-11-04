@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d258d51809ffaf4281efc3ffecb6a58, type: 3}
+  m_Name: TitleDatabase SO
+  m_EditorClassIdentifier: 
+  _genres:
+  - _name: Femenino
+    _id: 70
+  - _name: Masculino
+    _id: 77
+  _roles:
+  - _name: Estudiante
+    _id: 1
+  - _name: Docente
+    _id: 2
+  _permissionCategories:
+  - _name: Menu
+    _id: 1
+  - _name: Clase
+    _id: 2
+  _permissions:
+  - _name: Unirse a una clase
+    _id: 1
+  - _name: Crear una clase
+    _id: 2
+  - _name: Ver a los participantes
+    _id: 3
+  - _name: Silenciar a los participantes
+    _id: 4
+  _rolePermissionRel:
+  - _roleId: 1
+    _permissionId: 1
+    _isActive: 1
+  - _roleId: 2
+    _permissionId: 1
+    _isActive: 1
+  - _roleId: 2
+    _permissionId: 2
+    _isActive: 1
+  - _roleId: 1
+    _permissionId: 3
+    _isActive: 1
+  - _roleId: 2
+    _permissionId: 3
+    _isActive: 1
+  - _roleId: 2
+    _permissionId: 4
+    _isActive: 1
+  _categoryPermissionRel:
+  - _categoryId: 1
+    _permissionId: 1
+  - _categoryId: 1
+    _permissionId: 2
+  - _categoryId: 2
+    _permissionId: 3
+  - _categoryId: 2
+    _permissionId: 4

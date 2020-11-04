@@ -808,7 +808,6 @@ namespace Mirror
         /// <param name="newSceneName"></param>
         public virtual void ServerChangeScene(string newSceneName)
         {
-            Debug.Log(newSceneName);
             if (string.IsNullOrEmpty(newSceneName))
             {
                 logger.LogError("ServerChangeScene empty scene name");
@@ -877,7 +876,6 @@ namespace Mirror
             switch (sceneOperation)
             {
                 case SceneOperation.Normal:
-                    Debug.Log(newSceneName);
                     loadingSceneAsync = SceneManager.LoadSceneAsync(newSceneName);
                     break;
                 case SceneOperation.LoadAdditive:
@@ -1150,8 +1148,6 @@ namespace Mirror
         // called after successful authentication
         void OnServerAuthenticated(NetworkConnection conn)
         {
-            Debug.Log($"OnServerAuthenticated");
-
             logger.Log("NetworkManager.OnServerAuthenticated");
 
             // set connection to authenticated

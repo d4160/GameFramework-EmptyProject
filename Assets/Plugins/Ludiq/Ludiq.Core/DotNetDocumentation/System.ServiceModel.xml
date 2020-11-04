@@ -4007,7 +4007,7 @@
       <summary>This property is intended for system use and should not be called by users.</summary>
       <returns>true.</returns>
     </member>
-    <member name="E:System.ServiceModel.OperationContext.Operaticompleted">
+    <member name="E:System.ServiceModel.OperationContext.OperationCompleted">
       <summary>Occurs when the operation has completed. </summary>
     </member>
     <member name="P:System.ServiceModel.OperationContext.OutgoingMessageHeaders">
@@ -5618,7 +5618,7 @@
       <param name="beginOperationDelegate">A delegate that is used for calling the asynchronous operation.</param>
       <param name="inValues">The input values to the asynchronous call.</param>
       <param name="endOperationDelegate">A delegate that is used to end the asynchronous call after it has completed.</param>
-      <param name="operaticompletedCallback">A client-supplied callback that is invoked when the asynchronous method is complete. The callback is passed to the <see cref="T:System.ServiceModel.ClientBase`1.BeginOperationDelegate" />.</param>
+      <param name="operationCompletedCallback">A client-supplied callback that is invoked when the asynchronous method is complete. The callback is passed to the <see cref="T:System.ServiceModel.ClientBase`1.BeginOperationDelegate" />.</param>
       <param name="userState">The <paramref name="userState" /> object to associate with the asynchronous call.</param>
     </member>
     <member name="T:System.ServiceModel.ClientBase`1.BeginOperationDelegate">

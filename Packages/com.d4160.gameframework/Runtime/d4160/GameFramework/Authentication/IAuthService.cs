@@ -11,6 +11,8 @@ namespace d4160.GameFramework.Authentication
     {
         string DisplayName { get; }
         string Id { get; }
+        string SessionTicket { get; }
+        bool HasSession { get; }
 
         /// <summary>
         /// Authenticate this auth layer.

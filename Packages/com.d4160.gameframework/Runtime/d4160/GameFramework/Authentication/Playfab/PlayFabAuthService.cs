@@ -33,7 +33,7 @@ namespace d4160.GameFramework.Authentication
         Google
     }
 
-    public class PlayFabAuthService : IAuthService
+    public class PlayFabAuthService : BaseAuthService
     {
 
         //Events to subscribe to for this service
@@ -63,7 +63,6 @@ namespace d4160.GameFramework.Authentication
         public string Email;
         public string Username;
         public string Password;
-        public string AuthTicket;
 #if PHOTON_UNITY_NETWORKING
         public bool AuthenticateToPhotonAfterLogin;
 #endif
@@ -75,13 +74,7 @@ namespace d4160.GameFramework.Authentication
 
         private Completer _completer;
 
-        public string DisplayName { get; set; }
-        public string Id => _playFabId;
-        public static string SessionTicket => _sessionTicket;
-
-        // Accessbility for PlayFab ID & Session Tickets
-        private static string _playFabId;
-        private static string _sessionTicket;
+        public override bool HasSession => !string.IsNullOrEmpty(Id) && !string.IsNullOrEmpty(SessionTicket);
 
         private const string LoginRememberKey = "PlayFabLoginRemember";
         private const string PlayFabRememberMeIdKey = "PlayFabIdPassGuid";
@@ -187,7 +180,7 @@ namespace d4160.GameFramework.Authentication
             }
         }
 
-        public void Authenticate(Completer completer)
+        public override void Authenticate(Completer completer)
         {
             var authType = AuthType;
             //Debug.Log(authType);
@@ -229,22 +222,39 @@ namespace d4160.GameFramework.Authentication
             }
         }
 
-        public void Unauthenticate()
+        public override void Unauthenticate()
         {
-            _playFabId = null;
-            _sessionTicket = null;
+            Id = null;
+            SessionTicket = null;
 
             PlayFabClientAPI.ForgetAllCredentials();
         }
 
-        public void UpdateDisplayName(Action<UpdateUserTitleDisplayNameResult> resultCallback = null, Action<PlayFabError> errorCallback = null)
+        /// <summary>
+        /// Only sets this value for another methods, like register
+        /// </summary>
+        /// <param name="displayName"></param>
+        public void SetDisplayName(string displayName)
         {
+            DisplayName = displayName;
+        }
+
+        public void UpdateDisplayName(string displayName, Action<UpdateUserTitleDisplayNameResult> resultCallback = null, Action<PlayFabError> errorCallback = null)
+        {
+            DisplayName = displayName;
             PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest()
                 {
-                    DisplayName = DisplayName
+                    DisplayName = displayName
                 },
                 (result) =>
                 {
+#if PHOTON_UNITY_NETWORKING
+                    if (AuthenticateToPhotonAfterLogin)
+                    {
+                        PhotonAuthService photonAuth = PhotonAuthService.Instance;
+                        photonAuth.SetDisplayName(DisplayName);
+                    }
+#endif
                     resultCallback?.Invoke(result);
                 },
                 (error) =>
@@ -257,7 +267,7 @@ namespace d4160.GameFramework.Authentication
         {
             PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest()
                 {
-                    PlayFabId = _playFabId
+                    PlayFabId = Id
                 },
                 (result) =>
                 {
@@ -318,8 +328,8 @@ namespace d4160.GameFramework.Authentication
                 }, (result) =>
                 {
                     //Store identity and session
-                    _playFabId = result.PlayFabId;
-                    _sessionTicket = result.SessionTicket;
+                    Id = result.PlayFabId;
+                    SessionTicket = result.SessionTicket;
 
                     //report login result back to subscriber
                     _completer.Resolve();
@@ -357,8 +367,8 @@ namespace d4160.GameFramework.Authentication
             }, (result) =>
             {
                 //store identity and session
-                _playFabId = result.PlayFabId;
-                _sessionTicket = result.SessionTicket;
+                Id = result.PlayFabId;
+                SessionTicket = result.SessionTicket;
 
                 //Note: At this point, they already have an account with PlayFab using a Username (email) & Password
                 //If RememberMe is checked, then generate a new Guid for Login with CustomId.
@@ -412,8 +422,8 @@ namespace d4160.GameFramework.Authentication
                 }, (result) =>
                 {
                     //Store identity and session
-                    _playFabId = result.PlayFabId;
-                    _sessionTicket = result.SessionTicket;
+                    Id = result.PlayFabId;
+                    SessionTicket = result.SessionTicket;
 
                     //report login result back to subscriber
                     _completer.Resolve();
@@ -452,8 +462,8 @@ namespace d4160.GameFramework.Authentication
             }, (result) =>
             {
                 //store identity and session
-                _playFabId = result.PlayFabId;
-                _sessionTicket = result.SessionTicket;
+                Id = result.PlayFabId;
+                SessionTicket = result.SessionTicket;
 
                 //Note: At this point, they already have an account with PlayFab using a Username (email) & Password
                 //If RememberMe is checked, then generate a new Guid for Login with CustomId.
@@ -525,8 +535,8 @@ namespace d4160.GameFramework.Authentication
                 }, (addResult) =>
                 {
                     //Store identity and session
-                    _playFabId = result.PlayFabId;
-                    _sessionTicket = result.SessionTicket;
+                    Id = result.PlayFabId;
+                    SessionTicket = result.SessionTicket;
 
                     //If they opted to be remembered on next login.
                     if (RememberMe)
@@ -571,18 +581,20 @@ namespace d4160.GameFramework.Authentication
         private void RegisterPlayFabAccount()
         {
             var username = string.IsNullOrEmpty(Username) ? null : Username;
-            PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest()
+            var registerRequest = new RegisterPlayFabUserRequest()
             {
                 Username = username,
                 Email = Email, // Required
                 Password = Password, // Required
-                DisplayName = DisplayName,
+                DisplayName = string.IsNullOrEmpty(DisplayName) ? null : DisplayName,
                 RequireBothUsernameAndEmail = RequireBothUsernameAndEmail
-            }, (result) =>
+            };
+
+            PlayFabClientAPI.RegisterPlayFabUser(registerRequest, (result) =>
             {
                 //Store identity and session
-                _playFabId = result.PlayFabId;
-                _sessionTicket = result.SessionTicket;
+                Id = result.PlayFabId;
+                SessionTicket = result.SessionTicket;
 
                 //Report register result back to subscriber.
                 _completer.Resolve();
@@ -616,8 +628,8 @@ namespace d4160.GameFramework.Authentication
             }, (result) =>
             {
                 //Store Identity and session
-                _playFabId = result.PlayFabId;
-                _sessionTicket = result.SessionTicket;
+                Id = result.PlayFabId;
+                SessionTicket = result.SessionTicket;
 
                 //check if we want to get this callback directly or send to event subscribers.
                 if (OnLoginSuccess != null)
@@ -628,7 +640,7 @@ namespace d4160.GameFramework.Authentication
             }, (error) =>
             {
 
-                //report errro back to the subscriber
+                //report error back to the subscriber
                 if (OnPlayFabError != null)
                 {
                     OnPlayFabError.Invoke(error);
@@ -657,8 +669,8 @@ namespace d4160.GameFramework.Authentication
         }, (result) =>
         {
             //Store Identity and session
-            _playFabId = result.PlayFabId;
-            _sessionTicket = result.SessionTicket;
+            Id = result.PlayFabId;
+            SessionTicket = result.SessionTicket;
 
             //check if we want to get this callback directly or send to event subscribers.
             if (OnLoginSuccess != null)
@@ -706,8 +718,8 @@ namespace d4160.GameFramework.Authentication
         }, (result) => {
             
             //Store Identity and session
-            _playFabId = result.PlayFabId;
-            _sessionTicket = result.SessionTicket;
+            Id = result.PlayFabId;
+            SessionTicket = result.SessionTicket;
 
             //check if we want to get this callback directly or send to event subscribers.
             if (callback == null && OnLoginSuccess != null)
@@ -742,8 +754,8 @@ namespace d4160.GameFramework.Authentication
             InfoRequestParameters = InfoRequestParams
         }, (result) => {
             //Store Identity and session
-            _playFabId = result.PlayFabId;
-            _sessionTicket = result.SessionTicket;
+            Id = result.PlayFabId;
+            SessionTicket = result.SessionTicket;
 
             //check if we want to get this callback directly or send to event subscribers.
             if (callback == null && OnLoginSuccess != null)
@@ -776,8 +788,8 @@ namespace d4160.GameFramework.Authentication
             }, (result) =>
             {
                 //Store Identity and session
-                _playFabId = result.PlayFabId;
-                _sessionTicket = result.SessionTicket;
+                Id = result.PlayFabId;
+                SessionTicket = result.SessionTicket;
 
                 //check if we want to get this callback directly or send to event subscribers.
                 if (callback == null && OnLoginSuccess != null)
@@ -886,8 +898,8 @@ namespace d4160.GameFramework.Authentication
             {
                 photonAuth.AuthType = CustomAuthenticationType.Custom;
                 photonAuth.Token = rc.PhotonCustomAuthenticationToken;
-                photonAuth.CustomServiceId = _playFabId;
-                photonAuth.DisplayName = DisplayName;
+                photonAuth.CustomServiceId = Id;
+                photonAuth.SetDisplayName(DisplayName);
                 photonAuth.Authenticate();
 
                 result?.Invoke(rc);

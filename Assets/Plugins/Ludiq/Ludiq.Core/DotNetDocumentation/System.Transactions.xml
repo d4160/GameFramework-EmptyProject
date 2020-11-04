@@ -392,7 +392,7 @@
       <param name="serializationInfo">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
       <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" /> ) for this serialization. </param>
     </member>
-    <member name="E:System.Transactions.Transaction.Transacticompleted">
+    <member name="E:System.Transactions.Transaction.TransactionCompleted">
       <summary>Indicates that the transaction is completed.</summary>
       <exception cref="T:System.ObjectDisposedException">An attempt to subscribe this event on a transaction that has been disposed. </exception>
     </member>
@@ -420,13 +420,13 @@
       <param name="message">A <see cref="T:System.String" /> that contains a message that explains why the exception occurred.</param>
       <param name="innerException">Gets the exception instance that causes the current exception. For more information, see the <see cref="P:System.Exception.InnerException" /> property.</param>
     </member>
-    <member name="T:System.Transactions.TransacticompletedEventHandler">
-      <summary>Represents the method that handles the <see cref="E:System.Transactions.Transaction.Transacticompleted" /> event of a <see cref="T:System.Transactions.Transaction" /> class.</summary>
+    <member name="T:System.Transactions.TransactionCompletedEventHandler">
+      <summary>Represents the method that handles the <see cref="E:System.Transactions.Transaction.TransactionCompleted" /> event of a <see cref="T:System.Transactions.Transaction" /> class.</summary>
       <param name="sender">The source of the event.</param>
       <param name="e">The <see cref="T:System.Transactions.TransactionEventArgs" /> that contains the event data.</param>
     </member>
     <member name="T:System.Transactions.TransactionEventArgs">
-      <summary>Provides data for the following transaction events: <see cref="E:System.Transactions.TransactionManager.DistributedTransactionStarted" />, <see cref="E:System.Transactions.Transaction.Transacticompleted" />.</summary>
+      <summary>Provides data for the following transaction events: <see cref="E:System.Transactions.TransactionManager.DistributedTransactionStarted" />, <see cref="E:System.Transactions.Transaction.TransactionCompleted" />.</summary>
     </member>
     <member name="M:System.Transactions.TransactionEventArgs.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Transactions.TransactionEventArgs" /> class. </summary>

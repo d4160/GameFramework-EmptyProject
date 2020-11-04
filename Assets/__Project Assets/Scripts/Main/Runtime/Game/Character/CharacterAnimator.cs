@@ -1,109 +1,99 @@
 ﻿using Game.Health;
+using JetBrains.Annotations;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Game.Character
 {
-    [RequireComponent(typeof(CharacterAnimator))]
+    [RequireComponent(typeof(Animator))]
     public class CharacterAnimator : MonoBehaviour
     {
-        [SerializeField] private AudioSource _audio;
-        [SerializeField] private Transform _gloveBackPoint;
-        [SerializeField] private Transform _gloveFrontPoint;
-        [SerializeField] private Transform _bootBackPoint;
-        [SerializeField] private Transform _bootFrontPoint;
-        [SerializeField] private float _gloveBackDistance;
-        [SerializeField] private float _gloveFrontDistance;
-        [SerializeField] private float _bootBackDistance;
-        [SerializeField] private float _bootFrontDistance;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _forwardSpeedParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _verticalSpeedParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _lateralSpeedParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _turningSpeedParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _onRightFootParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _jumpedParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _fallParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _strafeParam;
+        [AnimatorParam("Animator")]
+        [SerializeField] private int _speedMultiplierParam;
 
         private Animator _anim;
-        private int _damageFinal;
-        private Vector3 _attackPoint;
-        private float _attackDistance;
-        private int _selectedIndex;
+
+        public Animator Animator
+        {
+            get
+            {
+                if (!_anim)
+                    _anim = GetComponent<Animator>();
+                return _anim;
+            }
+        }
 
         void Start()
         {
             _anim = GetComponent<Animator>();
         }
 
-        public void PlayAttackAnim(int damageFinal, int index)
+        public float ForwardSpeed
         {
-            string trigger = "";
-            _selectedIndex = index;
-
-            switch (index)
-            {
-                case 1:
-                    trigger = "Punch1";
-                    _attackPoint = _gloveBackPoint.position;
-                    _attackDistance = _gloveBackDistance;
-                    break;
-                case 2:
-                    trigger = "Punch2";
-                    _attackPoint = _gloveFrontPoint.position;
-                    _attackDistance = _gloveFrontDistance;
-                    break;
-                case 3:
-                    trigger = "Kick1";
-                    _attackPoint = _bootBackPoint.position;
-                    _attackDistance = _bootBackDistance;
-                    break;
-                case 4:
-                    trigger = "Kick2";
-                    _attackPoint = _bootFrontPoint.position;
-                    _attackDistance = _bootFrontDistance;
-                    break;
-            }
-
-            _anim.SetTrigger(trigger);
-
-            _damageFinal = damageFinal;
+            get => _anim.GetFloat(_forwardSpeedParam);
+            set => _anim.SetFloat(_forwardSpeedParam, value);
         }
 
-        public void AttackAction()
+        public float VerticalSpeed
         {
-            switch (_selectedIndex)
-            {
-                case 1:
-                    _attackPoint = _gloveBackPoint.position;
-                    _attackDistance = _gloveBackDistance;
-                    break;
-                case 2:
-                    _attackPoint = _gloveFrontPoint.position;
-                    _attackDistance = _gloveFrontDistance;
-                    break;
-                case 3:
-                    _attackPoint = _bootBackPoint.position;
-                    _attackDistance = _bootBackDistance;
-                    break;
-                case 4:
-                    _attackPoint = _bootFrontPoint.position;
-                    _attackDistance = _bootFrontDistance;
-                    break;
-            }
-
-            var direction = transform.parent.localScale.x;
-            var hit = Physics2D.Raycast(_attackPoint, Vector2.right * direction, _attackDistance);
-
-            if (hit.collider != null)
-            {
-                // Collides with something
-                Vector3 hitPoint = hit.point;
-                hit.rigidbody.GetComponent<HealthSystem>().TakeDamage(_damageFinal, hitPoint);
-
-                Debug.Log($"Damage {_damageFinal}");
-            }
+            get => _anim.GetFloat(_verticalSpeedParam);
+            set => _anim.SetFloat(_verticalSpeedParam, value);
         }
 
-        public void SetSpeed(float value)
+        public float LateralSpeed
         {
-            _anim.SetFloat("Speed", value);
+            get => _anim.GetFloat(_lateralSpeedParam);
+            set => _anim.SetFloat(_lateralSpeedParam, value);
         }
 
-        public void SetVolume(float volume)
+        public float TurningSpeed
         {
-            _audio.volume = volume;
+            get => _anim.GetFloat(_turningSpeedParam);
+            set => _anim.SetFloat(_turningSpeedParam, value);
+        }
+
+        public bool OnRightFoot
+        {
+            get => _anim.GetBool(_onRightFootParam);
+            set => _anim.SetBool(_onRightFootParam, value);
+        }
+
+        public void JumpedTrigger()
+        {
+            _anim.SetTrigger(_jumpedParam);
+        }
+
+        public void FallTrigger()
+        {
+            _anim.SetTrigger(_fallParam);
+        }
+
+        public bool Strafe
+        {
+            get => _anim.GetBool(_strafeParam);
+            set => _anim.SetBool(_strafeParam, value);
+        }
+
+        public float SpeedMultiplier
+        {
+            get => _anim.GetFloat(_speedMultiplierParam);
+            set => _anim.SetFloat(_speedMultiplierParam, value);
         }
     }
 }

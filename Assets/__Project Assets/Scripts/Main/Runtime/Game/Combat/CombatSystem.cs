@@ -1,48 +1,48 @@
-﻿using d4160.Core;
-using Game.Character;
-using NaughtyAttributes;
-using UnityEngine;
+﻿//using d4160.Core;
+//using Game.Character;
+//using NaughtyAttributes;
+//using UnityEngine;
 
-namespace Game.Combat
-{
-    public class CombatSystem : MonoBehaviourData<Damage, Defense>
-    {
-        private float _attackCountdown;
-        private CharacterAnimator _animator;
+//namespace Game.Combat
+//{
+//    public class CombatSystem : MonoBehaviourData<Damage, Defense>
+//    {
+//        private float _attackCountdown;
+//        private CharacterAnimator _animator;
 
-        public bool CanAttack => _attackCountdown == 0;
+//        public bool CanAttack => _attackCountdown == 0;
 
-        void Update()
-        {
-            if (_attackCountdown > 0)
-            {
-                _attackCountdown -= Time.deltaTime;
+//        void Update()
+//        {
+//            if (_attackCountdown > 0)
+//            {
+//                _attackCountdown -= Time.deltaTime;
 
-                if (_attackCountdown < 0)
-                    _attackCountdown = 0;
-            }
-        }
+//                if (_attackCountdown < 0)
+//                    _attackCountdown = 0;
+//            }
+//        }
 
-        public void Attack(int index)
-        {
-            if(!CanAttack)
-                return;
+//        public void Attack(int index)
+//        {
+//            if(!CanAttack)
+//                return;
 
-            if (!_animator)
-            {
-                _animator = GetComponentInChildren<CharacterAnimator>();
-            }
+//            if (!_animator)
+//            {
+//                _animator = GetComponentInChildren<CharacterAnimator>();
+//            }
 
-            var damageFinal = CalculateDamage();
+//            var damageFinal = CalculateDamage();
 
-            _animator.PlayAttackAnim(damageFinal, index);
+//            _animator.PlayAttackAnim(damageFinal, index);
 
-            _attackCountdown = 1f / _data1.attacksBySecond;
-        }
+//            _attackCountdown = 1f / _data1.attacksBySecond;
+//        }
 
-        private int CalculateDamage()
-        {
-            return _data1.damage;
-        }
-    }
-}
+//        private int CalculateDamage()
+//        {
+//            return _data1.damage;
+//        }
+//    }
+//}

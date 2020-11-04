@@ -1184,23 +1184,23 @@
         </member>
         <member name="F:Ludiq.ReorderableList.Internal.ReorderableListResources.s_LightSkin">
             <summary>
-            Resource sceness for light skin.
+            Resource assets for light skin.
             </summary>
             <remarks>
                 <para>
-                Resource sceness are PNG images which have been encoded using a base-64
-                string so that actual scenes files are not necessary.
+                Resource assets are PNG images which have been encoded using a base-64
+                string so that actual asset files are not necessary.
                 </para>
             </remarks>
         </member>
         <member name="F:Ludiq.ReorderableList.Internal.ReorderableListResources.s_DarkSkin">
             <summary>
-            Resource sceness for dark skin.
+            Resource assets for dark skin.
             </summary>
             <remarks>
                 <para>
-                Resource sceness are PNG images which have been encoded using a base-64
-                string so that actual scenes files are not necessary.
+                Resource assets are PNG images which have been encoded using a base-64
+                string so that actual asset files are not necessary.
                 </para>
             </remarks>
         </member>
@@ -1228,7 +1228,7 @@
         </member>
         <member name="M:Ludiq.ReorderableList.Internal.ReorderableListResources.LoadResourceAssets">
             <summary>
-            Read textures from base-64 encoded strings. Automatically selects sceness based
+            Read textures from base-64 encoded strings. Automatically selects assets based
             upon whether the light or dark (pro) skin is active.
             </summary>
         </member>

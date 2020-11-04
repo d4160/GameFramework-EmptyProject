@@ -10,6 +10,8 @@ namespace d4160.Core.MonoBehaviours
 
             gameObject.hideFlags = HideFlags.HideAndDontSave
                                    | HideFlags.HideInInspector;
+
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

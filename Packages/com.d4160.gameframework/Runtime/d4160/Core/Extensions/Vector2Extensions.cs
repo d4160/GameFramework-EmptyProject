@@ -74,5 +74,18 @@
 
             return v0.x;
         }
+
+        /// <summary>
+        /// Gets an interpolation time using <see cref="m_MinValue"/> and <see cref="m_MaxValue"/>.
+        /// </summary>
+        /// <param name="oldValue">The current value.</param>
+        /// <param name="newValue">The new value to approach.</param>
+        /// <returns>The interpolated value.</returns>
+        public static float GetInterpolationTime(this Vector2 source, float oldValue, float newValue)
+        {
+            var valueDifference = Mathf.Clamp(Mathf.Abs(oldValue - newValue), 0.0f, 1.0f);
+            var interpolationDifference = source.y - source.x;
+            return source.y - (valueDifference * interpolationDifference);
+        }
     }
 }

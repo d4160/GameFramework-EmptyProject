@@ -276,10 +276,10 @@
       <summary>Maintains the update subscription. </summary>
       <param name="textualSubId">The internal ID of the deployment.</param>
     </member>
-    <member name="T:System.Deployment.Application.DownloadApplicaticompletedEventArgs">
-      <summary>Provides data for the <see cref="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicaticompleted" /> event. </summary>
+    <member name="T:System.Deployment.Application.DownloadApplicationCompletedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicationCompleted" /> event. </summary>
     </member>
-    <member name="P:System.Deployment.Application.DownloadApplicaticompletedEventArgs.LogFilePath">
+    <member name="P:System.Deployment.Application.DownloadApplicationCompletedEventArgs.LogFilePath">
       <summary>Gets the path of the ClickOnce log file. </summary>
       <returns>A <see cref="T:System.String" /> containing the log path.</returns>
     </member>
@@ -381,7 +381,7 @@
       <summary>Downloads an application update in the background.</summary>
       <exception cref="T:System.InvalidOperationException">Raised if this method is called before the <see cref="M:System.Deployment.Application.InPlaceHostingManager.GetManifestAsync" /> and <see cref="M:System.Deployment.Application.InPlaceHostingManager.AssertApplicationRequirements" /> methods.</exception>
     </member>
-    <member name="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicaticompleted">
+    <member name="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicationCompleted">
       <summary>Occurs when the application has finished downloading to the local computer.</summary>
     </member>
     <member name="E:System.Deployment.Application.InPlaceHostingManager.DownloadProgressChanged">
@@ -455,7 +455,7 @@
       <param name="unsignedPolicy">The policy to use for unsigned applications.</param>
       <param name="signedPolicy">The policy to use for signed applications.</param>
     </member>
-    <member name="P:System.Deployment.Application.DownloadApplicaticompletedEventArgs.ShortcutAppId">
+    <member name="P:System.Deployment.Application.DownloadApplicationCompletedEventArgs.ShortcutAppId">
       <summary>The ID of the downloaded application.</summary>
       <returns>A <see cref="T:System.String" /> containing ID of the downloaded application.</returns>
     </member>

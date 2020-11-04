@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: ntkodaigo@outlook.com
-  DevAccountToken: y6kjz977w9o9zwd41bju6mkqph81mpecdaqf3side1peu4eqyc1ou7diyr79o987c9jujw7fzjk9y6bq53c9ei3fdqqczxg3t98z767ty1yffwdr4wbziw3fti6dki6eaymyuihdpdpgidhzxbue1kszggo5ps1qdryf46h9t684wxt8gyfoamytrk3gcbes8symeqej
+  DevAccountToken: ocdhn1eynh374a4q7hc61t5fnq6psrnc6mtf1cndpx97xeze4y1iwxh9xayagitpgku8b5ktzuua1bchan1i4863ukpsgew1c47bn5fid5kz1314xu8az995t3nmh3ec7iatxmnibm1s1u1tzenr3aismirrsnxt7497iie9wy9niddp8mtw3tky1phz5nzqxyjapywp
   SelectedStudio: Maranatha2031
   SdkPath: Assets/Plugins/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 5
   curSubMenuIdx: 0

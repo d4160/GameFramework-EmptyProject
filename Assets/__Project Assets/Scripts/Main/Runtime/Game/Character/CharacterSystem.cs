@@ -28,54 +28,54 @@ namespace Game.Character
 
         public void InstantiateCharacter()
         {
-            if (!GameFoundation.IsInitialized)
+            if (!GameFoundationSdk.IsInitialized)
             {
                 Debug.LogError("You need to initialize GameFoundation first.");
 
                 return;
             }
 
-            InventoryItem[] items = InventoryManager.FindItemsByTag("Personaje");
+            //InventoryItem[] items = InventoryManager.FindItemsByTag("Personaje");
 
-            if (items.Length == 0)
-            {
-                Debug.LogError("You don't have any character yet. Find one first!");
-                return;
-            }
+            //if (items.Length == 0)
+            //{
+            //    Debug.LogError("You don't have any character yet. Find one first!");
+            //    return;
+            //}
 
-            InventoryItem character = items.Random();
+            //InventoryItem character = items.Random();
 
-            var assetsDetail = character.definition.GetDetail<AssetsDetail>();
-            var prefab = assetsDetail.GetAsset<GameObject>("Prefab");
+            //var assetsDetail = character.definition.GetDetail<AssetsDetail>();
+            //var prefab = assetsDetail.GetAsset<GameObject>("Prefab");
 
-            _characterInstance = Instantiate(prefab);
-            _characterInstance.transform.SetParent(_characterRoot, false);
+            //_characterInstance = Instantiate(prefab);
+            //_characterInstance.transform.SetParent(_characterRoot, false);
 
-            if (!GameFoundation.IsInitialized)
-            {
-                Debug.LogError("You need to initialize GameFoundation first.");
-                return;
-            }
+            //if (!GameFoundation.IsInitialized)
+            //{
+            //    Debug.LogError("You need to initialize GameFoundation first.");
+            //    return;
+            //}
 
-            var characters = InventoryManager.FindItemsByTag("Personaje");
-            if (characters.Length > 1)
-            {
-                var player1 = characters[_player];
+            //var characters = InventoryManager.FindItemsByTag("Personaje");
+            //if (characters.Length > 1)
+            //{
+            //    var player1 = characters[_player];
 
-                string glove = player1.GetProperty("Guante");
-                string boot = player1.GetProperty("Bota");
-                int eyeColor = player1.GetProperty("EyeColor");
-                int bodyColor = player1.GetProperty("BodyColor");
-                int headColor = player1.GetProperty("HeadColor");
-                string name = player1.GetProperty("Name");
+            //    string glove = player1.GetProperty("Guante");
+            //    string boot = player1.GetProperty("Bota");
+            //    int eyeColor = player1.GetProperty("EyeColor");
+            //    int bodyColor = player1.GetProperty("BodyColor");
+            //    int headColor = player1.GetProperty("HeadColor");
+            //    string name = player1.GetProperty("Name");
 
-                var characterInventory = GetComponentInChildren<CharacterInventorySystem>();
-                characterInventory.SetBoots(boot);
-                characterInventory.SetGloves(glove);
-                characterInventory.ChangeEyeColor(PlayerSelectionMenu.EyeColors[eyeColor]);
-                characterInventory.ChangeBodyColor(PlayerSelectionMenu.BodyColors[bodyColor]);
-                characterInventory.ChangeHeadColor(PlayerSelectionMenu.HeadColors[headColor]);
-            }
+            //    var characterInventory = GetComponentInChildren<CharacterInventorySystem>();
+            //    characterInventory.SetBoots(boot);
+            //    characterInventory.SetGloves(glove);
+            //    //characterInventory.ChangeEyeColor(PlayerSelectionMenu.EyeColors[eyeColor]);
+            //    //characterInventory.ChangeBodyColor(PlayerSelectionMenu.BodyColors[bodyColor]);
+            //    //characterInventory.ChangeHeadColor(PlayerSelectionMenu.HeadColors[headColor]);
+            //}
         }
     }
 }

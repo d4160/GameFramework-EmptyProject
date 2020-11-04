@@ -1,0 +1,16 @@
+{
+    "name": "Characters.Effects",
+    "references": [
+        "GUID:13af65bdb2f802f44a7f8af36a02bc05",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
